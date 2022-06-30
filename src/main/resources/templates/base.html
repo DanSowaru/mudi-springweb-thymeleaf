@@ -1,0 +1,22 @@
+<head th:fragment="head">
+	<meta charset="UTF-8"/>
+	<link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" rel="stylesheet">
+	<style>
+        .logo-container {
+            background-color: #47bcff;
+            color: #FFF;
+        }
+	</style>
+</head>
+
+<div th:fragment="logo" class="logo-container">
+	<span>mudi</span>
+	<span>login</span>
+</div>
+
+<header th:fragment="titulo(valor)">
+	<div class="jumbotron jumbotron-fluid">
+			<h1 class="display-4" th:text="${valor}"></h1>
+	</div>
+</header>

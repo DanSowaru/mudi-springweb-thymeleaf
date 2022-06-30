@@ -1,0 +1,58 @@
+<html>
+<head th:replace="~{base :: head}"></head>
+
+<body>
+
+
+
+<div class="container">
+
+<div th:replace="~{base :: logo}">
+</div>
+	<header th:replace="~{base :: titulo('Meus Pedidos')}"></header>
+	<div class="card mt-3">
+		
+		<!--		o th:object é com a inicial minúscula do nome do Objeto-->
+		<!--		${} pra acessar um Objeto atributo do Request,
+					*{} pra associar um input a um atributo desse Objeto
+					*{} automaticamente preenche id, name e value-->
+		
+		<form action="/pedido/novo" class="card-body" method="POST" th:object="${requisicaoNovoPedido}">
+			<div class="form-group">
+				<label for="nomeProduto">Produto</label>
+				<input class="form-control is-invalid" placeholder="nome do produto" th:field="*{nomeProduto}"/>
+				<small>Informa qual o nome do produto.</small>
+				<div class="invalid-feedback" th:errors="*{nomeProduto}">
+					Erros do nome do produto
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="urlProduto">Url</label>
+				<input class="form-control" placeholder="url do produto" th:errorclass="is-invalid"
+				       th:field="*{urlProduto}"/>
+				<small>Procure em um site o produto que você deseja e cole a url da página aqui.</small>
+				<div class="invalid-feedback" th:errors="*{urlProduto}">
+					Erros na url do produto
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="urlImagem">Imagem</label>
+				<input class="form-control" placeholder="url da imagem" th:errorclass="is-invalid"
+				       th:field="*{urlImagem}"/>
+				<small>Copie a url de uma boa imagem do produto e cole aqui para ajudar a conseguir compradores.</small>
+				<div class="invalid-feedback" th:errors="*{urlImagem}">
+					Erros na url da imagem
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="descricao">Descrição</label>
+				<textarea class="form-control" placeholder="Adicione detalhes importantes para ajudar o comprador." th:errorclass="is-invalid"
+				          th:field="*{descricao}"></textarea>
+			</div>
+			<button class="btn btn-primary" type="submit">Cadastrar</button>
+		</form>
+	
+	</div>
+</div>
+</body>
+</html>
